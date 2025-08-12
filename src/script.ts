@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { Timer } from "three/addons/misc/Timer.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import updateResize from "./utils/updateResize";
 import { viewport, canvasElement } from "./commons/base";
@@ -30,7 +29,7 @@ const aspect = viewport.width / viewport.height;
 const near = 0.1;
 const far = 100;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.set(0.25, -0.25, 1);
+camera.position.set(0.25, -0.25, 2.5);
 scene.add(camera);
 
 // Controls
@@ -52,10 +51,9 @@ updateResize({ viewport, renderer, camera });
 /**
  * Animate
  */
-const timer = new Timer();
+const clock = new THREE.Clock();
 const tick = () => {
-  timer.update();
-  const elapsedTime = timer.getElapsed();
+  const elapsedTime = clock.getElapsedTime();
 
   // Update controls
   controls.update();
