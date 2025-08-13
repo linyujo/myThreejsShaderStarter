@@ -49,11 +49,20 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 updateResize({ viewport, renderer, camera });
 
 /**
+ * Update Mesh Uniforms
+ */
+const updateFlagAnimation = (elapsedTime: number) => {
+  planeMesh.material.uniforms.uTime.value = elapsedTime;
+};
+
+/**
  * Animate
  */
 const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+
+  updateFlagAnimation(elapsedTime);
 
   // Update controls
   controls.update();
