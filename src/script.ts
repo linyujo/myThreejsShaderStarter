@@ -29,7 +29,7 @@ const aspect = viewport.width / viewport.height;
 const near = 0.1;
 const far = 100;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.set(0.25, -0.25, 2.5);
+camera.position.set(0.25, 0.5, 2.5);
 scene.add(camera);
 
 // Controls

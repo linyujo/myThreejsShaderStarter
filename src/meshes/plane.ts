@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { vertexShader, fragmentShader } from "../shaders/test";
+import { vertexShader, fragmentShader } from "../shaders/ragingSea";
 
 /**
  * Plane Mesh
@@ -10,5 +10,6 @@ const material = new THREE.ShaderMaterial({
   fragmentShader,
 });
 const planeMesh = new THREE.Mesh(geometry, material);
+planeMesh.rotation.x = -Math.PI * 0.5;
 
 export { planeMesh };
