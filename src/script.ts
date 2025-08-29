@@ -29,7 +29,7 @@ const aspect = viewport.width / viewport.height;
 const near = 0.1;
 const far = 100;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.set(0.25, 0.5, 2.5);
+camera.position.set(0.5, 2.5, 2.5);
 scene.add(camera);
 
 // Controls
@@ -49,11 +49,21 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 updateResize({ viewport, renderer, camera });
 
 /**
+ * Update uniform uTime
+ */
+const updateUniforms = (elapsedTime: number) => {
+  planeMesh.material.uniforms.uTime.value = elapsedTime;
+};
+
+/**
  * Animate
  */
 const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+
+  // Update uniforms
+  updateUniforms(elapsedTime);
 
   // Update controls
   controls.update();
